@@ -87,7 +87,6 @@ def update_user_list():
 
     session.commit()
 
-
 #### Bot Functions ############################################################
 
 @bot.listen_for(all_messages)
@@ -113,12 +112,19 @@ def notify_general(event_data):
     response = '{{user.username}} created {{channel.name}}.\n{}'.format(invite_me)
     return user, channel, response
 
-@bot.listen_for('where do you live')
+@bot.listen_for('what are you')
 @is_mention
 def source_code(user, channel, message):
-    repo_url = 'https://github.com/punchagan/parktain'
-    message = 'Well, I live in your hearts...\nYou can change me from here {}, though.'
-    return message.format(repo_url)
+    response = 'Good evening! I am a HAL 9000 computer.'
+    return response.format()
+
+@bot.listen_for('explain yourself')
+@is_mention
+def explain_itself(user, channel, message):
+    response = 'The Heuristically programmed ALgorithmic Computer(HAL) 9000 computer is an artificial intelligence and the onboard computer on the spaceship Discovery 1. HAL 9000, more commonly called "Hal", became operational in the HAL plant in Urbana, Illinois, on January 12, 1992. His first instructor was Dr. Chandra. Hal is capable of many functions, such as speech, speech recognition, facial recognition, lip reading, interpreting emotions, expressing emotions, and chess, in addition to maintaining all systems on Discovery.'
+    return response.format()
+
+
 
 #### Cron functions ###########################################################
 
